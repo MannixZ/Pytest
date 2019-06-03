@@ -15,3 +15,9 @@ import pytest
 def login():
     print('输入账号，密码先登录')
 
+@pytest.fixture(scope='session')
+def first1():
+    print('score=session')
+    a = 'yoyo'
+    return a
+
