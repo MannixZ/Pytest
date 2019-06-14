@@ -11,7 +11,6 @@
 
 import sys
 import pytest
-import myModule
 
 pyversion = pytest.mark.skipif(sys.version_info < (3,7), reason='requires python3.6 or higher')
 

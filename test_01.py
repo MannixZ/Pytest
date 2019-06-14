@@ -9,10 +9,12 @@
 
 '''
 
+from selenium import webdriver
 import pytest
 
 # 测试登录数据
 test_login_data = [('admin', '111111'), ('admin', '')]
+
 
 def login(user, psw):
     '''普通登录函数'''
