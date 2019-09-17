@@ -10,7 +10,6 @@
 '''
 
 from selenium import webdriver
-
 import pytest
 
 driver = None
@@ -32,9 +31,21 @@ def pytest_runtest_makereport(item):
                        "onclick='window.open(this.src)' align='right'/></div>" % screen_img
                 extra.append(pytest_html.extras.html(html))
         report.extra = extra
+        # report.description = str(item.funciton.__doc__)
+
+# @pytest.mark.optionalhook
+# def pytest_html_result_table_header(cells):
+#     cells.insert(1, html.th('D'))
 
 def _capture_screenshot():
     return driver.get_screenshot_as_base64()
+
+@pytest.fixture(scope='session', autouse=True)
+def browser():
+    global driver
+    if driver is None:
+        driver = webdriver.Chrome()
+    return driver
 
 @pytest.fixture(scope='session', autouse=True)
 def browser():

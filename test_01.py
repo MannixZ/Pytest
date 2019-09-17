@@ -10,6 +10,7 @@
 '''
 
 from selenium import webdriver
+import time
 import pytest
 
 # 测试登录数据
@@ -30,6 +31,15 @@ def test_login(user, psw):
     '''登录用例'''
     result = login(user, psw)
     assert result == True, '失败原因：密码为空'
+
+
+def test_yoyo_01(browser):
+
+    browser.get("https://www.baidu.com")
+    time.sleep(2)
+    t = browser.title
+    assert t == 'baidu'
+
 
 if __name__ == '__main__':
     pytest.main(['-s', 'test_01.py'])
